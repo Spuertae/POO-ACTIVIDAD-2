@@ -1,0 +1,177 @@
+public class PruevasFiguras {
+
+    public static void main(String[] args) {
+        Circulo figura1 = new Circulo(2);
+        Rectangulo figura2 = new Rectangulo(1,2);
+        Cuadrado figura3 = new Cuadrado(3);
+        TrianguloRectangulo figura4 = new TrianguloRectangulo(3,5);
+        Rombo figura5 = new Rombo(8,4,5);
+        Trapecio figura6 = new Trapecio(8, 6, 4, 5);
+        
+        
+        System.out.println("El area del circulo es = " + figura1.calcularArea());
+        System.out.println("El perimetro del circulo es = " + figura1.calcularPerimetro());
+        System.out.println();
+        System.out.println("El area del rectangulo es = " + figura2.calcularArea());
+        System.out.println("El perimetro del rectangulo es = " + figura2.calcularPerimetro());
+        System.out.println();
+        System.out.println("El area del cuadrado es = " + figura3.calcularArea());
+        System.out.println("El perimetro del cuadrado es = " + figura3.calcularPerimetro());
+        System.out.println();
+        System.out.println("El area del triangulo es = " + figura4.calcularArea());
+        System.out.println("El perimetro del triangulo es = " + figura4.calcularPerimetro());
+        figura4.determinarTipoTriangulo();
+        
+        System.out.println("El area del Rombo es = " + figura5.calcularArea());
+        System.out.println("El perimetro del Rombo es = " + figura5.calcularPerimetro());
+        
+        System.out.println("El area del trapecio es = " + figura6.calcularArea());
+        System.out.println("El perimetro del trapecio es = " + figura6.calcularPerimetro());
+     }
+}
+Clases
+Circulo 
+package com.mycompany.pruevasfiguras;
+
+class Circulo {
+        int radio; 
+
+    Circulo(int radio) {
+    this.radio = radio;
+    }
+
+    double calcularArea() {
+    return Math.PI*Math.pow(radio,2);
+    }
+
+    double calcularPerimetro() {
+    return 2*Math.PI*radio;
+    }
+    
+}
+Cuadrado
+package com.mycompany.pruevasfiguras;
+
+public class Cuadrado {
+  int lado; 
+
+    public Cuadrado(int lado) {
+    this.lado = lado;
+    }
+
+    double calcularArea() {
+    return lado * lado;
+    }
+
+    double calcularPerimetro() {
+    return (4 * lado);
+    }
+ }
+Rectángulo
+package com.mycompany.pruevasfiguras;
+
+
+public class Rectangulo {
+   
+    int base; 
+    int altura; 
+
+    Rectangulo(int base, int altura) {
+    this.base = base;
+    this.altura = altura;
+    }
+
+    double calcularArea() {
+    return base * altura;
+    }
+
+    double calcularPerimetro() {
+    return (2 * base) + (2 * altura);
+    }
+}
+Triangulo rectángulo
+package com.mycompany.pruevasfiguras;
+
+public class TrianguloRectangulo {
+        int base; 
+        int altura; 
+        
+        public TrianguloRectangulo(int base, int altura) {
+            this.base = base;
+            this.altura = altura;
+        }
+
+         double calcularArea() {
+            return (base * altura / 2);
+         }
+
+         double calcularPerimetro() {
+            return (base + altura + calcularHipotenusa());
+         }
+         
+         double calcularHipotenusa() {
+            return Math.pow(base*base + altura*altura, 0.5);
+         }
+
+         void determinarTipoTriangulo() {
+            if ((base == altura) && (base == calcularHipotenusa()) && (altura == calcularHipotenusa()))
+                System.out.println("Es un triángulo equilatero");
+            else if ((base != altura) && (base != calcularHipotenusa()) && (altura != calcularHipotenusa()))
+                System.out.println("Es un triángulo escaleno");
+            else 
+                System.out.println("Es un triángulo isósceles");
+            }     
+                    
+            
+ }
+
+Trapecio 
+package com.mycompany.pruevasfiguras;
+
+
+public class Trapecio {
+        int b; 
+        int B;
+        int l;
+        int h;
+        
+        
+        public Trapecio(int B, int b, int h, int l) {
+            this.B = B;
+            this.b = b;
+            this.l = l;
+            this.h = h;
+        }
+
+         double calcularArea() {
+            return ((B + b) / 2) * h;
+         }
+
+         double calcularPerimetro() {
+           return (B + b + l + l );
+         }
+}
+Rombo 
+package com.mycompany.pruevasfiguras;
+
+ 
+public class Rombo {
+        int D; 
+        int d; 
+        int l; 
+        
+        
+        public Rombo(int D, int d, int l) {
+            this.D = D;
+            this.d = d;
+            this.l = l;
+         }
+
+         double calcularArea() {
+            return (D * d) / 2;
+         }
+
+         double calcularPerimetro() {
+            return (l * 4);
+         }
+}
